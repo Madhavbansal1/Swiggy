@@ -1,4 +1,7 @@
+import ApiCalling from './ApiCalling'
+import RestaurantsCard from './RestaurantsCard';
 function Body() {
+    const data = ApiCalling();
     return (
         <>
             <div className="ml-20 mt-4">
@@ -19,7 +22,12 @@ function Body() {
                     type="text"
                     placeholder="Search restaurants..."
                 />
+                
             </div>
+
+            <RestaurantsCard restArr={data} />
+
+
         </>
     );
 }
