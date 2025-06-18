@@ -1,13 +1,16 @@
 import { PiStarLight } from "react-icons/pi";
+import { Link } from "react-router-dom";
 function RestaurantsCard({ restArr }) {
     return (
         <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {restArr.map((restaurant, index) => {
-                const { name, avgRating, cuisines, locality, cloudinaryImageId } = restaurant.info;
+                const { name, avgRating, cuisines, locality, cloudinaryImageId,id } = restaurant.info;
 
                 return (
+                    <>
+                    <Link to={`/restaurant/${id}`}>
                     <div
-                        key={index}
+                        key={id}
                         className="bg-white shadow-md rounded-xl overflow-hidden transition-transform hover:scale-105 duration-300"
                     >
                         <img
@@ -25,6 +28,8 @@ function RestaurantsCard({ restArr }) {
                             <p className="text-sm text-gray-500">{locality}</p>
                         </div>
                     </div>
+                    </Link>
+                    </>
                 );
             })}
         </div>
