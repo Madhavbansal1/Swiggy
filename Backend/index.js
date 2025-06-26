@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import RestaurantRoutes from './routes/Restaurant.routes.js';
-
-import mongoose, { mongo } from 'mongoose';
+import UserRoutes from './routes/User.routes.js';
+import mongoose from 'mongoose';
+import { use } from 'react';
 
 dotenv.config();
 
@@ -16,7 +17,8 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.error("Error connecting to MongoDB:", err);
 });
 
-app.use("/restaurants",RestaurantRoutes)
+app.use("/restaurants",RestaurantRoutes);
+app.use("/users",UserRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.get('/', (req,res)=>{
